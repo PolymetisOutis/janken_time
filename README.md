@@ -17,8 +17,4 @@ pip install django-allauth
 
 pip install django-ses
 
-<<<<<<< HEAD
-を行ってからローカル環境でサーバーを立ち上げてください。# janken_time
-=======
 を行ってからローカル環境でサーバーを立ち上げてください。
->>>>>>> 6a749d2d9e14306bb7b97557d8a51c531192fd9e
