@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}退会{% endblock %}
+{% block head %}
+    <style type="text/css">
+    .content-top{
+    margin-top: 6rem;
+    }
+    </style> 
+{% endblock %}
+{% block active_signup %}active{% endblock %}
+{% block contents %}
+<h2>アカウント削除の確認</h2>
+<p>本当にアカウントを削除しますか？この操作は取り消せません。</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">はい、削除します</button>
+</form>
+<a href="{% url 'index' %}">キャンセル</a>
+{% endblock %}
