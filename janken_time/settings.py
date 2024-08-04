@@ -12,8 +12,20 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+# instanceを作成
+env = environ.Env(
+    # 初期値を設定
+    DEBUG=(bool, False)
+)
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# manage.pyのある階層にある.envを読み込む
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -49,6 +61,8 @@ INSTALLED_APPS = [
     'allauth.account',
 
     'django_ses',
+
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -185,3 +199,11 @@ AWS_SES_ACCESS_KEY_ID = os.environ.get('AWS_SES_ACCESS_KEY_ID')
 AWS_SES_SECRET_ACCESS_KEY = os.environ.get('AWS_SES_SECRET_ACCESS_KEY')
 EMAIL_BACKEND = 'django_ses.SESBackend'
 
+
+ACCOUNT_FORMS = {
+    'signup': 'accounts.forms.CustomSignupForm',
+}
+
+
+RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')

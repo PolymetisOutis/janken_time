@@ -17,4 +17,8 @@ pip install django-allauth
 
 pip install django-ses
 
+pip install django-environ
+
+pip install django-recaptcha
+
 を行ってからローカル環境でサーバーを立ち上げてください。
