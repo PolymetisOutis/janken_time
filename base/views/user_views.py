@@ -59,7 +59,7 @@ def edit_page(request):
 
 class AccountDeleteView(LoginRequiredMixin, DeleteView):
   model = CustomUser  # あなたのユーザーモデル
-  success_url = reverse_lazy('index')  # 退会後のリダイレクト先
+  success_url = reverse_lazy('base:index')  # 退会後のリダイレクト先
   template_name = 'account/account_confirm_delete.html'
 
   def get_object(self, queryset=None):
