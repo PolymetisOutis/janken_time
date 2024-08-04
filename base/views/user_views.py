@@ -10,6 +10,8 @@ from django.contrib.auth import logout
 from django.views.generic import DeleteView
 from django.http import HttpResponseRedirect
 
+from django.urls import reverse
+
 @login_required
 def self_profile(request):
     user = CustomUser.objects.get(id=request.user.id)
@@ -55,19 +57,28 @@ def edit_page(request):
   })
   # return redirect('base:self_profile')
 
+@login_required
+def account_delete(request):
+    if request.method == 'POST':
+        user = request.user
+        logout(request)
+        messages.success(request, '退会処理が完了しました。')
+        user.delete()
+        return redirect(reverse('base:index'))
+    
+    return render(request, 'account/account_confirm_delete.html')
 
+# class AccountDeleteView(LoginRequiredMixin, DeleteView):
+#   model = CustomUser  # あなたのユーザーモデル
+#   success_url = reverse_lazy('base:index')  # 退会後のリダイレクト先
+#   template_name = 'account/account_confirm_delete.html'
 
-class AccountDeleteView(LoginRequiredMixin, DeleteView):
-  model = CustomUser  # あなたのユーザーモデル
-  success_url = reverse_lazy('base:index')  # 退会後のリダイレクト先
-  template_name = 'account/account_confirm_delete.html'
+#   def get_object(self, queryset=None):
+#       return self.request.user
 
-  def get_object(self, queryset=None):
-      return self.request.user
-
-  def delete(self, request, *args, **kwargs):
-      user = self.get_object()
-      logout(request)
-      messages.success(request, '退会処理が完了しました。')
-      user.delete()
-      return HttpResponseRedirect(self.success_url)
+#   def delete(self, request, *args, **kwargs):
+#       user = self.get_object()
+#       logout(request)
+#       messages.success(request, '退会処理が完了しました。')
+#       user.delete()
+#       return HttpResponseRedirect(self.success_url)
