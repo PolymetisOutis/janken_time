@@ -57,6 +57,7 @@ def edit_page(request):
   })
   # return redirect('base:self_profile')
 
+
 @login_required
 def account_delete(request):
     if request.method == 'POST':
