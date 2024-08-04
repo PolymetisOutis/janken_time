@@ -18,8 +18,4 @@ class UserEditForm(forms.ModelForm): # 以下追記箇所
 class CustomSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        captcha = ReCaptchaField(
-                widget= widgets.ReCaptchaV3(
-                action='signup'
-            )
-        )
+        captcha = ReCaptchaField()
