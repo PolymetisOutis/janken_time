@@ -10,7 +10,7 @@ urlpatterns = [
     path('edit_page/', views.edit_page, name='edit_page'), # 追記箇所(13～14行目)
     path('self_profile/', views.self_profile, name='self_profile'),
     path('delete/', views.AccountDeleteView.as_view(), name='account_delete'),
-    
+
     # path('base/', views.reviewbase, name='base'),
     path('', views.index, name='index'),
     path('settings/', views.settings, name='settings'),
