@@ -9,7 +9,8 @@ app_name = 'base'
 urlpatterns = [
     path('edit_page/', views.edit_page, name='edit_page'), # 追記箇所(13～14行目)
     path('self_profile/', views.self_profile, name='self_profile'),
-    path('delete/', views.AccountDeleteView.as_view(), name='account_delete'),
+    # path('delete/', views.AccountDeleteView.as_view(), name='account_delete'),
+    path('delete/', views.account_delete, name='account_delete'),
 
     # path('base/', views.reviewbase, name='base'),
     path('', views.index, name='index'),
