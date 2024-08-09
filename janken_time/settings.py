@@ -201,7 +201,7 @@ EMAIL_BACKEND = 'django_ses.SESBackend'
 
 
 ACCOUNT_FORMS = {
-    'signup': 'accounts.forms.CustomSignupForm',
+    'signup': 'base.forms.CustomSignupForm',
 }
 
 
