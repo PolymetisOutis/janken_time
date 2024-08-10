@@ -19,4 +19,4 @@ class CustomSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
