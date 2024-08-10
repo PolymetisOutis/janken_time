@@ -5,6 +5,8 @@ from allauth.account.forms import (
     SignupForm,
 )
 
+from django_recaptcha.widgets import ReCaptchaV3
+
 class UserEditForm(forms.ModelForm): # 以下追記箇所
   picture = forms.FileField(label='picture', required=False)
   username = forms.CharField(label='user name')
@@ -19,4 +21,4 @@ class CustomSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
-    captcha = ReCaptchaField(widget=widgets.ReCaptchaV3)
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
