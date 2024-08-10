@@ -10,11 +10,11 @@
 {% block contents %}
 <div class="content-top">
 <h2>アカウント削除の確認</h2>
-<p>本当にアカウントを削除しますか？この操作は取り消せません。</p>
+<p>本当にアカウントを削除しますか？この操作は取り消せません。"Are you sure?"</p>
 <form method="post">
     {% csrf_token %}
-    <button type="submit">はい、削除します</button>
+    <button type="submit">はい、削除します"Yes, I quit!"</button>
 </form>
-<a href="{% url 'base:self_profile' %}">キャンセル</a>
+<a href="{% url 'base:self_profile' %}">キャンセル"Cancel"</a>
 </div>
 {% endblock %}
